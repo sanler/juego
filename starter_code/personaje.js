@@ -145,8 +145,35 @@ function Person(game) {
     this.img4 = new Image();
     this.img4.src = 'images/cliente1_bad.png';
   
-    var personaje={img1: this.img1, img2: this.img2, img3: this.img3, img4: this.img4, 
-                  }
+    this.personajes.push({img1: this.img1, img2: this.img2, img3: this.img3, img4: this.img4});
+    
+    this.img1 = new Image();
+    this.img1.src = 'images/cliente2_arrival.png';
+    
+    this.img2 = new Image();
+    this.img2.src = 'images/cliente2_order.png';
+    
+    this.img3 = new Image();
+    this.img3.src = 'images/cliente2_win.png';
+    
+    this.img4 = new Image();
+    this.img4.src = 'images/cliente2_bad.png';
+  
+    this.personajes.push({img1: this.img1, img2: this.img2, img3: this.img3, img4: this.img4});
+    
+    this.img1 = new Image();
+    this.img1.src = 'images/cliente3_arrival.png';
+    
+    this.img2 = new Image();
+    this.img2.src = 'images/cliente3_order.png';
+    
+    this.img3 = new Image();
+    this.img3.src = 'images/cliente3_win.png';
+    
+    this.img4 = new Image();
+    this.img4.src = 'images/cliente3_bad.png';
+  
+    this.personajes.push({img1: this.img1, img2: this.img2, img3: this.img3, img4: this.img4});
     
   
   };*/
