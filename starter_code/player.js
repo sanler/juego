@@ -1,10 +1,10 @@
 
-function Player(game,key1, key2, key3,key4,keyDelete, keyServe,clientBurger) {
+function Player(game,key1, key2, key3,key4,keyDelete, keyServe) {
 
     this.game=game;
     
     this.pressedIngredients=[];
-    this.clientBurger=clientBurger;
+    this.clientBurger;
     this.key1=key1;//pan
     this.key2=key2;//queso
     this.key3=key3;//carne
@@ -13,9 +13,9 @@ function Player(game,key1, key2, key3,key4,keyDelete, keyServe,clientBurger) {
     this.keyDelete=keyDelete;
     this.keyServe=keyServe;
     
-    this.setListeners();
+    //this.setListeners();
     
-    
+    this.score=0;
     
     //array con palabras aleatorias mínimo 3
     /*this.secretWord='';//palabra elegida al azar
@@ -23,12 +23,19 @@ function Player(game,key1, key2, key3,key4,keyDelete, keyServe,clientBurger) {
     this.guessedLetter='';//cadena con las letras acertadas. La usaremos para ver si hemos ganado
     this.errorsLeft=10;//max de errores*/
      }
-    
-    
-    
+
+     
+     Player.prototype.burgerOrder = function (clientBurger) {
+
+      this.clientBurger=clientBurger;
+    };
+     
+     Player.prototype.scores = function () {
+      this.score++;
+    };
     
      Player.prototype.delete = function () {
-    
+      this.pressedIngredients=[];
      };
     
      Player.prototype.serve = function () {
@@ -39,8 +46,9 @@ function Player(game,key1, key2, key3,key4,keyDelete, keyServe,clientBurger) {
       
       //var img=new Image();
     
-      document.onkeydown = function(event) {
-    
+      
+      
+       this.listener =function(event) {
         if (event.keyCode==this.key1) {
           var img=new Image();
     
@@ -118,25 +126,74 @@ function Player(game,key1, key2, key3,key4,keyDelete, keyServe,clientBurger) {
           this.pressedIngredients=[];
     
         }else if(event.keyCode==this.keyServe){
-    
+                    
+                    if(this.keyServe===16){
+
+                                    this.game.player2.removeListener();
+
+
+                                    if(this.checkWinner()){
+                  
+                                      alert('acierto');
+                                      this.game.player1.removeListener();
+
+
+                                }else{
+                        
+                                  alert('fallo');
+                                  this.game.player2.setListeners();
+
+                        
+                                }
+
+
+
+                    }else if(this.keyServe===32){
+
+
+                      this.game.player1.removeListener();
+
+                              if(this.checkWinner()){
+            
+                                alert('acierto');
+
+                                this.game.player2.removeListener();
+
+                          }else{
+                  
+                            alert('fallo');
+
+                            this.game.player1.setListeners();
+
+                  
+                          }
+                      
+                    }
+
+
            // alert('burger player 1 : '+this.pressedIngredients);
     
-             if(this.checkWinner()){
-    
-                  alert('acierto');
-    
-    
-             }else{
-    
-              alert('fallo');
-    
-    
-             }
+             
         }
     
-      }.bind(this);
-    };
+    }.bind(this);
     
+    document.addEventListener('keydown', this.listener , false);
+
+
+      /*document.onkeydown = function(event) {
+    
+   
+      }.bind(this);*/
+    };
+
+
+
+
+    Player.prototype.removeListener = function() {
+      document.removeEventListener('keydown', this.listener);
+    };
+
     /*
      Hangman.prototype.checkIfLetter = function (keyCode) {
     
@@ -251,7 +308,7 @@ function Player(game,key1, key2, key3,key4,keyDelete, keyServe,clientBurger) {
           
             console.log('ACIERTO');
             this.game.person.win=1;
-    
+            this.scores();
             return true;
     
         }else{
@@ -267,9 +324,9 @@ function Player(game,key1, key2, key3,key4,keyDelete, keyServe,clientBurger) {
     
     
     
-     Player.prototype.burgerDraw = function () {
+     Player.prototype.burgerDraw = function (x) {
     // console.log('burgerDraw');
-      //console.log(this.pressedIngredients.length);
+      console.log(this.pressedIngredients.length);
     
         if(this.pressedIngredients.length !==0){
         //  console.log('burgerDraw 11111');
@@ -277,7 +334,7 @@ function Player(game,key1, key2, key3,key4,keyDelete, keyServe,clientBurger) {
         
             for(i=0;i<this.pressedIngredients.length;i++){
     
-        this.game.ctx.drawImage(this.pressedIngredients[i].img, 721, y, 180, 50);
+        this.game.ctx.drawImage(this.pressedIngredients[i].img, x, y, 180, 50);
         //alert(this.pressedIngredients[i].img.src);
          //debugger
           y-=40;
@@ -285,7 +342,15 @@ function Player(game,key1, key2, key3,key4,keyDelete, keyServe,clientBurger) {
       }
      };
     
-    
+     Player.prototype.scoreDraw = function (x) {
+      // console.log('burgerDraw');
+        //console.log(this.pressedIngredients.length);
+      // this.game.ctx.drawImage(this.pressedIngredients[i].img, 0, y, 180, 50);
+      this.game.ctx.font = '48px serif';  
+      this.game.ctx.fillText(this.score,x, 100);
+
+      
+       };
     /*
     document.onkeydown = function (e) {
       var winner=false;

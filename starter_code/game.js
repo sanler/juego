@@ -3,6 +3,11 @@ function Game(canvadId) {
     this.ctx = this.canvas.getContext("2d");
     this.fps = 40;
 
+
+    
+    this.player1=new Player(this,38,39,40,37,18,16);
+    this.player2=new Player(this,68,86,67,88,90,32);
+
     this.reset();
   }
   
@@ -67,11 +72,18 @@ function Game(canvadId) {
     
     this.order.getBurger();
 
-    this.player1=new Player(this,38,39,40,37,18,16,this.order.selectedBurger);
-    //this.player2=new Player(this,38,39,40,37,18,16,this.order.selectedBurger);
+    this.player1.delete();
+    this.player2.delete();
+
+    this.player1.setListeners();
+    this.player2.setListeners();
+
+    this.player1.burgerOrder(this.order.selectedBurger);
+    this.player2.burgerOrder(this.order.selectedBurger);
+
     this.person=new Person(this);
     this.person.getClient();
-    
+
     this.framesCounter = 0;
 
   };
@@ -84,6 +96,9 @@ function Game(canvadId) {
   Game.prototype.draw = function() {
     this.background.draw();
     this.person.draw();
+    this.player1.scoreDraw(900);
+    this.player2.scoreDraw(100);
+
     if(this.person.x>600){
 
 if(!this.person.win){
@@ -91,7 +106,8 @@ if(!this.person.win){
   
   }
   
-   this.player1.burgerDraw();
+   this.player1.burgerDraw(721);
+   this.player2.burgerDraw(200);
 
     }
 
