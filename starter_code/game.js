@@ -70,6 +70,8 @@ function Game(canvadId) {
     this.player1=new Player(this,38,39,40,37,18,16,this.order.selectedBurger);
     //this.player2=new Player(this,38,39,40,37,18,16,this.order.selectedBurger);
     this.person=new Person(this);
+    this.person.getClient();
+    
     this.framesCounter = 0;
 
   };

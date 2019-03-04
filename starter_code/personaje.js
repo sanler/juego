@@ -2,19 +2,20 @@ function Person(game) {
     this.game = game;
    
     this.personajes=[];
-  
+    this.createClient();
     this.x = this.game.canvas.width * 0.08;
   
     // guardar posición original (suelo)
     this.y0 = this.game.canvas.height * 0.3;
     this.y = this.y0;
   
-    this.img = new Image();
-    this.img.src = 'images/cliente1_arrival.png';
+    this.selectedPerson;
+
+    //seleccionar cliente aleatorio del array personajes
+    this.img;
+    //this.img.src = this.selectedPerson.img1.src;
     
     // número de imágenes diferentes
-    this.img.frames = 3;
-    this.img.frameIndex = 0;
   
     // medidas de la imagen a representar en el canvas
     this.w = 200;
@@ -98,7 +99,9 @@ function Person(game) {
     
     }else{
     
-        this.img.src = 'images/cliente1_order.png';
+        this.img.src = this.selectedPerson.img2.src;
+        
+        
         
       }
   
@@ -107,7 +110,10 @@ function Person(game) {
   
    }else if(this.win==1){
   
-    this.img.src = 'images/cliente1_win.png'; //caritas felices con estrellas
+  //  this.img.src = 'images/cliente1_win.png'; //caritas felices con estrellas
+
+    this.img.src = this.selectedPerson.img3.src;
+
    if(this.x<=1200){
     
       this.x+=5;
@@ -131,7 +137,7 @@ function Person(game) {
     }*/
   };
   
-  /*Person.prototype.createClient = function() {
+  Person.prototype.createClient = function() {
    
     this.img1 = new Image();
     this.img1.src = 'images/cliente1_arrival.png';
@@ -176,4 +182,23 @@ function Person(game) {
     this.personajes.push({img1: this.img1, img2: this.img2, img3: this.img3, img4: this.img4});
     
   
-  };*/
+  };
+
+  Person.prototype.getClient = function () {
+    //alert('getBurger');
+    var min=0;
+    var max=this.personajes.length;
+    var aleatorio= Math.floor(Math.random() * (max - min) + min); 
+   // alert('a'+aleatorio);
+    this.selectedPerson=this.personajes[aleatorio];
+    this.img = this.selectedPerson.img1;
+    this.img.src = this.selectedPerson.img1.src;
+
+
+
+    this.img.frames = 3;
+    this.img.frameIndex = 0;
+  
+    return this.personajes[aleatorio];
+
+};
