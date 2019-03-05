@@ -95,7 +95,7 @@ function Person(game) {
   
     if(this.x<=600){
     
-      this.x+=5;
+    this.x+=5;
     
     }else{
     
@@ -110,6 +110,9 @@ function Person(game) {
   
    }else if(this.win==1){
   
+
+
+
   //  this.img.src = 'images/cliente1_win.png'; //caritas felices con estrellas
 
     this.img.src = this.selectedPerson.img3.src;
@@ -201,4 +204,16 @@ function Person(game) {
   
     return this.personajes[aleatorio];
 
+};
+
+
+Person.prototype.playSound = function () {
+if(this.win===1){
+
+
+  playSound ('restaurant');
+
+
+}
+ 
 };

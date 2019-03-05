@@ -11,7 +11,85 @@ function Game(canvadId) {
     this.reset();
   }
   
+
+
+
+  Game.prototype.reset = function() {
+
+
+if(this.level===1){
+
+
+    this.background = new Background(this,'images/fondo1.png');
+
+    this.order = new Order(this,this.level);
+    
+    this.order.getBurger();
+
+    this.player1.delete();
+    this.player2.delete();
+
+   this.player1.burgerIngredients();
+   this.player2.burgerIngredients();
+
+    this.player1.setListeners();
+    this.player2.setListeners();
+
+    this.player1.burgerOrder(this.order.selectedBurger);
+    this.player2.burgerOrder(this.order.selectedBurger);
+
+    this.person=new Person(this);
+    this.person.getClient();
+
+    this.framesCounter = 0;
+}else if(this.level===2){
+
+//  playSound('paris');
+
+alert('level2');
+  this.background = new Background(this,'images/paris.jpg');
+
+  this.order = new Order(this,1);
+  
+  this.order.getBurger();
+
+  this.player1.delete();
+  this.player2.delete();
+
+ this.player1.burgerIngredients();
+ this.player2.burgerIngredients();
+
+  this.player1.setListeners();
+  this.player2.setListeners();
+
+  this.player1.burgerOrder(this.order.selectedBurger);
+  this.player2.burgerOrder(this.order.selectedBurger);
+
+  this.person=new Person(this);
+  this.person.getClient();
+
+  this.framesCounter = 0;
+
+
+}
+  };
+  
+
+
+
   Game.prototype.start = function() {
+
+    /* if(this.level===1){
+
+      this.makeSound('restaurant');
+
+     }else if(this.level===2){
+
+      this.makeSound('shot');
+
+     }*/
+
+
 
     this.interval = setInterval(function() {
 
@@ -33,7 +111,7 @@ function Game(canvadId) {
       
       this.moveAll();
       this.draw();
-
+      this.makeSound();
 
     //alert('burger');
     
@@ -82,59 +160,7 @@ function Game(canvadId) {
     
   };
 
-  Game.prototype.reset = function() {
-if(this.level===1){
-    this.background = new Background(this,'images/fondo1.png');
-
-    this.order = new Order(this,this.level);
-    
-    this.order.getBurger();
-
-    this.player1.delete();
-    this.player2.delete();
-
-   this.player1.burgerIngredients();
-   this.player2.burgerIngredients();
-
-    this.player1.setListeners();
-    this.player2.setListeners();
-
-    this.player1.burgerOrder(this.order.selectedBurger);
-    this.player2.burgerOrder(this.order.selectedBurger);
-
-    this.person=new Person(this);
-    this.person.getClient();
-
-    this.framesCounter = 0;
-}else if(this.level===2){
-alert('level2');
-  this.background = new Background(this,'images/paris.jpg');
-
-  this.order = new Order(this,1);
-  
-  this.order.getBurger();
-
-  this.player1.delete();
-  this.player2.delete();
-
- this.player1.burgerIngredients();
- this.player2.burgerIngredients();
-
-  this.player1.setListeners();
-  this.player2.setListeners();
-
-  this.player1.burgerOrder(this.order.selectedBurger);
-  this.player2.burgerOrder(this.order.selectedBurger);
-
-  this.person=new Person(this);
-  this.person.getClient();
-
-  this.framesCounter = 0;
-
-
-}
-  };
-  
+ 
   
   Game.prototype.clear = function() {
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
@@ -171,3 +197,11 @@ if(!this.person.win){
   Game.prototype.stop = function() {
     clearInterval(this.interval);
   };
+
+  Game.prototype.makeSound = function() {
+
+  this.person.playSound();
+  
+  };
+
+
