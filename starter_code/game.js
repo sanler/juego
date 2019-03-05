@@ -42,6 +42,8 @@ if(this.level===1){
     this.person.getClient();
 
     this.framesCounter = 0;
+
+
 }else if(this.level===2){
 
 //  playSound('paris');
@@ -88,6 +90,7 @@ alert('level2');
       this.makeSound('shot');
 
      }*/
+     createjs.Sound.play('shot');
 
 
 
@@ -111,7 +114,8 @@ alert('level2');
       
       this.moveAll();
       this.draw();
-      this.makeSound();
+      this.person.Hola();
+      //this.makeSound();
 
     //alert('burger');
     
@@ -198,10 +202,10 @@ if(!this.person.win){
     clearInterval(this.interval);
   };
 
-  Game.prototype.makeSound = function() {
+ /* Game.prototype.makeSound = function() {
 
   this.person.playSound();
   
   };
 
-
+*/

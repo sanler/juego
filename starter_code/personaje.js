@@ -23,7 +23,8 @@ function Person(game) {
   
     this.vy = 1;
     this.win=0;
-  
+    this.contador=1;
+
    
   
   
@@ -207,7 +208,7 @@ function Person(game) {
 };
 
 
-Person.prototype.playSound = function () {
+/*Person.prototype.playSound = function () {
 if(this.win===1){
 
 
@@ -216,4 +217,33 @@ if(this.win===1){
 
 }
  
+};*/
+
+Person.prototype.Hola = function() {
+      
+  //var img=new Image();
+
+  
+   //this.listener =function() {
+    if (this.x===601 && this.contador===1) {
+    
+      createjs.Sound.play('shot');
+
+      this.contador=0;    
+
+    }
+
+    //debugger
+  
+
+//}.bind(this);
+
+//document.addEventListener('keydown', this.listener , false);
+
+
+  /*document.onkeydown = function(event) {
+
+
+  }.bind(this);*/
 };
+

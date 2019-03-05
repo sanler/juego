@@ -4,6 +4,7 @@ window.onload = function() {
 
 document.getElementById('start-game-button').onclick = function () {
 
+  playSound ('restaurant');
 
 
     game.start();
