@@ -1,13 +1,18 @@
 
-function Order(game) {
+function Order(game,level) {
     this.game = game;
   
   //Ingredientes pan 1,queso 2, carne 3, lechuga 4
   
   this.burgers=[];
   
+  if(level===1){
   this.createBurgerMenu();
-  
+  }else{
+
+ this.createIceCreamMenu();
+
+  }
   this.max_ingridientes;
   
   this.selectedBurger=[];
@@ -29,6 +34,17 @@ function Order(game) {
     this.burgers[3]= new Burger("tipo 3",[1,2,4,3,1], 'images/burger3.png');
   
      };
+
+
+     Order.prototype.createIceCreamMenu = function () {
+    
+      this.burgers[0]= new Burger("tipo 0",[1,2,4,3,4,1],'images/burger0.png');
+      this.burgers[1]= new Burger("tipo 1",[1,2,4,4,1], 'images/burger1.png');
+      this.burgers[2]= new Burger("tipo 2",[1,4,4,1], 'images/burger2.png');
+      this.burgers[3]= new Burger("tipo 3",[1,2,4,3,1], 'images/burger3.png');
+    
+       };
+    
   
      Order.prototype.getBurger = function () {
         //alert('getBurger');

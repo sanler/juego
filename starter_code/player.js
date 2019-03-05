@@ -10,6 +10,7 @@ function Player(game,key1, key2, key3,key4,keyDelete, keyServe) {
     this.key3=key3;//carne
     this.key4=key4;//lechuga
     
+    this.ingredientes=[];
     this.keyDelete=keyDelete;
     this.keyServe=keyServe;
     
@@ -24,7 +25,35 @@ function Player(game,key1, key2, key3,key4,keyDelete, keyServe) {
     this.errorsLeft=10;//max de errores*/
      }
 
+
+
+     Player.prototype.burgerIngredients = function () {
+      var img0=new Image();
+      img0.src = 'images/panarriba.png';
+      var img1=new Image();
+      img1.src = 'images/panbajo.png';
+      var img2=new Image();
+      img2.src = 'images/queso.png'; 
+      var img3=new Image();
+      img3.src = 'images/carne.png';
+      var img4=new Image();
+      img4.src = 'images/lechuga.png';
+
+      
+      this.ingredientes[0]={nombre:'panarriba', img:img0};
+      this.ingredientes[1]={nombre:'panbajo', img:img1};
+      this.ingredientes[2]={nombre:'queso', img:img2};
+      this.ingredientes[3]={nombre:'carne', img:img3};
+      this.ingredientes[4]={nombre:'lechuga', img:img4};
+
+    };
      
+    Player.prototype.iceCreamIngredients = function () {
+
+      this.clientBurger=clientBurger;
+    };
+     
+
      Player.prototype.burgerOrder = function (clientBurger) {
 
       this.clientBurger=clientBurger;
@@ -51,7 +80,7 @@ function Player(game,key1, key2, key3,key4,keyDelete, keyServe) {
        this.listener =function(event) {
         if (event.keyCode==this.key1) {
           var img=new Image();
-    
+        
           var panDeAbajo=0;
     
     
@@ -68,13 +97,14 @@ function Player(game,key1, key2, key3,key4,keyDelete, keyServe) {
     
             if(panDeAbajo){
     
-              img.src = 'images/panarriba.png';
-    
+             // img.src = 'images/panarriba.png';
+              img.src = this.ingredientes[0].img.src;
     
             }else{
     
-              img.src = 'images/panbajo.png';
-    
+            //  img.src = 'images/panbajo.png';
+           
+            img.src = this.ingredientes[1].img.src;
     
             }
     
@@ -92,8 +122,9 @@ function Player(game,key1, key2, key3,key4,keyDelete, keyServe) {
     
           var img=new Image();
     
-          img.src = 'images/queso.png';
-        
+         // img.src = 'images/queso.png';
+          img.src = this.ingredientes[2].img.src;
+
           this.pressedIngredients.push({valor:2,img:img});
     
          // this.game.ctx.drawImage(this.queso, 500, 200, 130, 130);
@@ -102,8 +133,9 @@ function Player(game,key1, key2, key3,key4,keyDelete, keyServe) {
          // alert('3');
           var img=new Image();
     
-          img.src = 'images/carne.png';
-           
+          //img.src = 'images/carne.png';
+          img.src = this.ingredientes[3].img.src;
+
     
           this.pressedIngredients.push({valor:3,img:img});
          // alert(this.pressedIngredients);
@@ -114,8 +146,9 @@ function Player(game,key1, key2, key3,key4,keyDelete, keyServe) {
          // alert('4');
           var img=new Image();
     
-          img.src = 'images/lechuga.png';
-    
+         // img.src = 'images/lechuga.png';
+         img.src = this.ingredientes[4].img.src;
+
           this.pressedIngredients.push({valor:4, img:img});
     
          // this.game.ctx.drawImage(this.lechuga, 500, 200, 130, 130);
@@ -326,7 +359,7 @@ function Player(game,key1, key2, key3,key4,keyDelete, keyServe) {
     
      Player.prototype.burgerDraw = function (x) {
     // console.log('burgerDraw');
-      console.log(this.pressedIngredients.length);
+      //console.log(this.pressedIngredients.length);
     
         if(this.pressedIngredients.length !==0){
         //  console.log('burgerDraw 11111');
