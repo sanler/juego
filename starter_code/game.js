@@ -90,7 +90,7 @@ alert('level2');
       this.makeSound('shot');
 
      }*/
-     createjs.Sound.play('shot');
+     createjs.Sound.play('campana');
 
 
 

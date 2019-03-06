@@ -342,7 +342,7 @@ function Player(game,key1, key2, key3,key4,keyDelete, keyServe) {
             console.log('ACIERTO');
             this.game.person.win=1;
             this.scores();
-            createjs.Sound.play('shot');
+            createjs.Sound.play('acierto');
 
             return true;
     

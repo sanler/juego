@@ -227,7 +227,7 @@ Person.prototype.Hola = function() {
    //this.listener =function() {
     if (this.x===601 && this.contador===1) {
     
-      createjs.Sound.play('shot');
+      createjs.Sound.play('hola');
 
       this.contador=0;    
 

@@ -22,7 +22,7 @@ document.getElementById('start-game-button').onclick = function () {
     var assetsPath = "Sounds/_assets/audio/";
      var sounds = [
       { src: "restaurant2.mp3", id: "restaurant" },
-      { src: "Game-Shot.mp3", id: "shot" }
+      { src: "Game-Shot.mp3", id: "shot" },{ src: "acierto.mp3", id: "acierto" },{ src: "campana_entrada.mp3", id: "campana" },{ src: "hello.mp3", id: "hola" }
     //  { src: "chimes.mp3", id: "yarn" },
      
     //{ src: "chimes.mp3", id: "fishbone" }
