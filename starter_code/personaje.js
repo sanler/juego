@@ -6,7 +6,7 @@ function Person(game) {
     this.x = this.game.canvas.width * 0.08;
   
     // guardar posición original (suelo)
-    this.y0 = this.game.canvas.height * 0.3;
+    this.y0 = 250;
     this.y = this.y0;
   
     this.selectedPerson;
@@ -124,7 +124,7 @@ function Person(game) {
     
     }else{
   
-  
+  alert('next client???');
       this.game.nextClient();
   
     }
@@ -220,14 +220,21 @@ if(this.win===1){
 };*/
 
 Person.prototype.Hola = function() {
+      var saludo;
       
   //var img=new Image();
+ if(this.game.level===1){
+  saludo='hola';
 
+ }else if(this.game.level===2){
+  saludo='bonjour';
+
+ }
   
    //this.listener =function() {
     if (this.x===601 && this.contador===1) {
     
-      createjs.Sound.play('hola');
+      createjs.Sound.play(saludo,{volume:1});
 
       this.contador=0;    
 

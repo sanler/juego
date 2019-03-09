@@ -4,7 +4,7 @@ window.onload = function() {
 
 document.getElementById('start-game-button').onclick = function () {
 
-  playSound ('restaurant');
+  //playSound ('restaurant');
 
 
     game.start();
@@ -15,13 +15,14 @@ document.getElementById('start-game-button').onclick = function () {
 
 
   function loadSounds() {
+
     if (!createjs.Sound.initializeDefaultPlugins()) {
       return;
     }
     
     var assetsPath = "Sounds/_assets/audio/";
      var sounds = [
-      { src: "restaurant2.mp3", id: "restaurant" },
+      { src: "restaurant2.mp3", id: "restaurant" },{ src: "paris.mp3", id: "paris" },{ src: "bonjour.mp3", id: "bonjour" },
       { src: "Game-Shot.mp3", id: "shot" },{ src: "acierto.mp3", id: "acierto" },{ src: "campana_entrada.mp3", id: "campana" },{ src: "hello.mp3", id: "hola" }
     //  { src: "chimes.mp3", id: "yarn" },
      
@@ -31,6 +32,7 @@ document.getElementById('start-game-button').onclick = function () {
     createjs.Sound.registerSounds(sounds, assetsPath);
     }
 
+   
 
 
 

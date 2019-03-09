@@ -1,10 +1,11 @@
+var instance;
+var soundParis;
 function Game(canvadId) {
     this.canvas = document.getElementById(canvadId);
     this.ctx = this.canvas.getContext("2d");
     this.fps = 40;
     this.level=1;
-
-    
+    this.effects = [];
     this.player1=new Player(this,38,39,40,37,18,16);
     this.player2=new Player(this,68,86,67,88,90,32);
 
@@ -18,6 +19,9 @@ function Game(canvadId) {
 
 
 if(this.level===1){
+
+    //this.sound=new playSound('restaurant');
+    //this.sound_level1 = createjs.Sound.play("restaurant", {loop:-1});
 
 
     this.background = new Background(this,'images/fondo1.png');
@@ -43,13 +47,22 @@ if(this.level===1){
 
     this.framesCounter = 0;
 
+    this.effects.push(new Effect(
+      this,
+      'coins'
+    ));
+    this.effects.push(new Effect(
+      this,
+      'star'
+    ));
 
 }else if(this.level===2){
+  //this.sound_level1.paused=true;
+    //this.sound=new playSound('restaurant');
+    //this.sound_level1 = createjs.Sound.play("restaurant", {loop:-1});
 
-//  playSound('paris');
-
-alert('level2');
-  this.background = new Background(this,'images/paris.jpg');
+alert('JIJIJIJI');
+  this.background = new Background(this,'images/paris.png');
 
   this.order = new Order(this,1);
   
@@ -81,15 +94,23 @@ alert('level2');
 
   Game.prototype.start = function() {
 
-    /* if(this.level===1){
+    if(this.level===1){
 
-      this.makeSound('restaurant');
+      instance = createjs.Sound.play("restaurant", {interrupt: createjs.Sound.INTERRUPT_ANY, loop: -1, volume: 1});
+    
+    
+      instance.paused=false;
 
-     }else if(this.level===2){
+    
+    }else if(this.level===2){
 
-      this.makeSound('shot');
+      
 
-     }*/
+      
+
+     }
+
+
      createjs.Sound.play('campana');
 
 
@@ -141,13 +162,19 @@ alert('level2');
 
   Game.prototype.nextClient = function() {
 
-    alert('this.player1.score'+this.player1.score);
-    alert('this.player2.score'+this.player2.score);
+
+    //alert('this.player1.score'+this.player1.score);
+    //alert('this.player2.score'+this.player2.score);
 
         if(this.player1.score===3 ||this.player2.score===3){
 
-
+        
         this.level=2;
+        soundParis = createjs.Sound.play("paris", {interrupt: createjs.Sound.INTERRUPT_ANY, loop: -1, volume: 0.2});
+    
+    
+        soundParis.paused=false;
+
 
         }else if(this.player1.score===6 ||this.player2.score===6){
 
@@ -175,12 +202,18 @@ alert('level2');
     this.person.draw();
     this.player1.scoreDraw(900);
     this.player2.scoreDraw(100);
+   // this.effects[0].draw(this.person.x,this.person.y);
 
     if(this.person.x>600){
 
 if(!this.person.win){
    this.order.draw();
   
+  }else{
+
+    this.effects[0].draw(this.person.x,this.person.y);
+
+
   }
   
    this.player1.burgerDraw(721);
@@ -188,7 +221,7 @@ if(!this.person.win){
 
     }
 
-
+   
   };
   
 
@@ -200,6 +233,8 @@ if(!this.person.win){
 
   Game.prototype.stop = function() {
     clearInterval(this.interval);
+    instance.paused=true;
+
   };
 
  /* Game.prototype.makeSound = function() {
@@ -209,3 +244,29 @@ if(!this.person.win){
   };
 
 */
+/*Game.prototype.checkState = function() {
+  this.player.checkPosition();
+
+  if (!this.objectsFound) {
+    this.objects.forEach(function(o, index) {
+      if (o.checkPlayerPosition()) {
+        createjs.Sound.play(o.className);
+
+        this.effects.push(new Effect(
+          this,
+          o.x,
+          o.y + o.height,
+          (o.className === 'cat') ? 'hearts': 'star'
+        ));
+
+        this.objects.splice(index, 1);
+      }
+    }.bind(this));
+  }
+
+  this.locks.forEach(function(l, index) {
+    if (l.checkPlayerPosition()) {
+      this.locks.splice(index, 1);
+    }
+  }.bind(this));
+}*/
