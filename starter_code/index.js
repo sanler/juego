@@ -12,6 +12,7 @@ window.onload = function() {
     
     var game = new Game("canvas");
     game.start();
+    
 
   };
 
@@ -31,7 +32,12 @@ window.onload = function() {
     { src: "Game-Shot.mp3", id: "shot" },
     { src: "acierto.mp3", id: "acierto" },
     { src: "campana_entrada.mp3", id: "campana" },
-    { src: "hello.mp3", id: "hola" }
+    { src: "hello.mp3", id: "hola" },
+    { src: "fallo_Level1.mp3", id: "fallo_Level1" },
+    { src: "ny.mp3", id: "ny" },
+    { src: "goodmorning.mp3", id: "goodmorning" },
+    { src: "ganador.mp3", id: "ganador" }
+
     ];
 
     createjs.Sound.registerSounds(sounds, assetsPath);

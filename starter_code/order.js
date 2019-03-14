@@ -4,8 +4,11 @@ this.game = game;
 this.burgers=[];
 if(level===1){
 this.createBurgerMenu();
-}else{
+}else if(level===2){
 this.createIceCreamMenu();
+}else if(level===3){
+
+this.createHotDogMenu();
 }
 this.max_ingridientes;
 this.selectedBurger=[];
@@ -31,6 +34,15 @@ this.selectedBurger=[];
       this.burgers[3]= new Burger("tipo 3",[1,4,3,2,3,4], 'images/helado_4.png');
     
        };
+
+       Order.prototype.createHotDogMenu = function () {
+    
+        this.burgers[0]= new Burger("tipo 0",[1,2,3],'images/perrito_1.png');
+        this.burgers[1]= new Burger("tipo 1",[1,2,4,3,4], 'images/perrito_2.png');
+        this.burgers[2]= new Burger("tipo 2",[1,3,4,4,3,2], 'images/perrito_3.png');
+        this.burgers[3]= new Burger("tipo 3",[1,4,3,3,2,4], 'images/perrito_4.png');
+      
+         };
     
   
 Order.prototype.getBurger = function () {

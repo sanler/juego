@@ -62,6 +62,31 @@ Player.prototype.iceCreamIngredients = function () {
 
   
 };
+
+Player.prototype.hotDogIngredients = function () {
+
+  //this.clientBurger=clientBurger;
+
+  var img0=new Image();
+  img0.src = 'images/perrito_pan.png';
+  var img1=new Image();
+  img1.src = 'images/perrito_pan.png';
+  var img2=new Image();
+  img2.src = 'images/lechugaperrito.png'; 
+  var img3=new Image();
+  img3.src = 'images/mostaza.png';
+  var img4=new Image();
+  img4.src = 'images/ketchup.png';
+
+  this.ingredientes[0]={nombre:'perrito_pan', img:img0};
+  this.ingredientes[1]={nombre:'perrito_pan', img:img1};
+  this.ingredientes[2]={nombre:'lechugaperrito', img:img2};
+  this.ingredientes[3]={nombre:'mostaza', img:img3};
+  this.ingredientes[4]={nombre:'ketchup', img:img4};
+
+
+  
+};
      
 Player.prototype.burgerOrder = function (clientBurger) {
 
@@ -235,8 +260,8 @@ Player.prototype.checkWinner = function (clientBurger) {
   }else{
 
     console.log('NOT YET');
-    // this.game.person.win=5;
-    createjs.Sound.play('shot');
+    this.game.person.win=5;
+    createjs.Sound.play('fallo_Level1');
 
     return false;
 
@@ -245,18 +270,44 @@ Player.prototype.checkWinner = function (clientBurger) {
 };
     
 Player.prototype.burgerDraw = function (x) {
+  if(this.game.level==1){
+    if(this.pressedIngredients.length !==0){
 
-  if(this.pressedIngredients.length !==0){
+      var y=610;
 
-    var y=610;
+      for(i=0;i<this.pressedIngredients.length;i++){
 
-    for(i=0;i<this.pressedIngredients.length;i++){
+        this.game.ctx.drawImage(this.pressedIngredients[i].img, x, y, 180, 50);
+        y-=40;
 
-      this.game.ctx.drawImage(this.pressedIngredients[i].img, x, y, 180, 50);
-      y-=40;
-
+      }
     }
-  }
+  }else if(this.game.level==2){
+
+    if(this.pressedIngredients.length !==0){
+
+      var y=310;
+
+      for(i=0;i<this.pressedIngredients.length;i++){
+
+        this.game.ctx.drawImage(this.pressedIngredients[i].img, x, y, 150, 350);
+        y-=30;
+
+      }
+    }
+  }if(this.game.level==3){
+    if(this.pressedIngredients.length !==0){
+
+      var y=510;
+
+      for(i=0;i<this.pressedIngredients.length;i++){
+
+        this.game.ctx.drawImage(this.pressedIngredients[i].img, x, y, 300, 150);
+        y-=15;
+
+      }
+    }
+  }    
 
 };
     

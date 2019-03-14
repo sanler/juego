@@ -15,8 +15,8 @@ function Effect(game, type) {
       case 'coins':
         this.image.frames = 5;
         break;
-      case 'corazones':
-        this.image.frames = 10;
+      case 'angry':
+        this.image.frames = 8;
         break;
     }
   }

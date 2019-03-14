@@ -58,6 +58,12 @@ Person.prototype.move = function() {
 
     }
 
+  }else if(this.win==5){
+
+
+    this.img.src = this.selectedPerson.img4.src;
+
+
   }else if(this.win==1){
   
     this.img.src = this.selectedPerson.img3.src;
@@ -142,6 +148,8 @@ Person.prototype.Hola = function() {
     saludo='hola';
   }else if(this.game.level===2){
     saludo='bonjour';
+  }else if(this.game.level===3){
+    saludo='goodmorning';
   }
 
   if (this.x===601 && this.contador===1) {
