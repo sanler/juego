@@ -2,8 +2,8 @@ function Effect(game, type) {
     this.game = game;
    // this.x;
    // this.y;
-    this.width = 100;
-    this.height = 100;
+    this.width = 60;
+    this.height = 90;
   
     //this.cont = 0;
   
@@ -13,9 +13,9 @@ function Effect(game, type) {
     
     switch (type) {
       case 'coins':
-        this.image.frames = 9;
+        this.image.frames = 5;
         break;
-      case 'star':
+      case 'corazones':
         this.image.frames = 10;
         break;
     }

@@ -5,15 +5,8 @@ function playSound (id) {
    
 
 
-    //createjs.Sound.play(id,createjs.Sound.INTERRUPT_NONE,0,0,-1,.5,0);
+    createjs.Sound.play(id,createjs.Sound.INTERRUPT_NONE,0,0,-1,.5,0);
   }
-  playSound.prototype.play=function(){
-
-
-    createjs.Sound.play(this.id,this.props);
-
-
-
-  }
+  
   
 
