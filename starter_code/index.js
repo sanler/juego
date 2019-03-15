@@ -36,7 +36,9 @@ window.onload = function() {
     { src: "fallo_Level1.mp3", id: "fallo_Level1" },
     { src: "ny.mp3", id: "ny" },
     { src: "goodmorning.mp3", id: "goodmorning" },
-    { src: "ganador.mp3", id: "ganador" }
+    { src: "ganador.mp3", id: "ganador" },
+    { src: "FIN.mp3", id: "FIN" }
+
 
     ];
 

@@ -135,7 +135,7 @@ Game.prototype.nextClient = function() {
   }else if((this.player1.score===3 ||this.player2.score===3) && this.flaglevel==2 ){
         this.level=4;
         //alert("GAME OVEEEEER");
-        ganador = createjs.Sound.play("ganador", {interrupt: createjs.Sound.INTERRUPT_ANY, loop: -1, volume: 0.2});
+        ganador = createjs.Sound.play("FIN", {interrupt: createjs.Sound.INTERRUPT_ANY, loop: 1, volume: 0.2});
         ganador.paused=false;
         //ver qué player tiene mayor score
         this.flaglevel=3;
@@ -208,10 +208,10 @@ Game.prototype.stop = function() {
     this.background='';
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
     var winner=this.whoWins();
-    document.getElementById('ganador').innerHTML=' WINNER: '+winner+' !!!';
-    document.getElementById('score').innerHTML='PLAYER 1 :'+this.player1.score+' PLAYER 2 :'+this.player2.score;
+   document.getElementById('ganador').innerHTML=' WINNER: '+winner+' !!!';
+    document.getElementById('score').innerHTML='Player 1: '+this.player1.score+'$   Player 2: '+this.player2.score+'$';
 
-    document.getElementById('winner').style.display = 'block';
+    document.getElementById('container').style.display = 'block';
 
     //this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
   

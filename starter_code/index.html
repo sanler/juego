@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="stylesheets/intro.css">
   <link rel="stylesheet" href="stylesheets/styles.css">
-  <link rel="stylesheet" href="stylesheets/winner.css">
+  <link rel="stylesheet" href="stylesheets/closure.css">
 
   <title>Iron Burger</title>
 </head>
@@ -55,7 +55,7 @@
   </div> 
 
     
-  <div class="winner" id="winner">  
+ <!-- <div class="winner" id="winner">  
   
       <section>
         
@@ -92,10 +92,44 @@
 
       </section>
   
-    </div> 
+    </div> -->
 
+    <div class="container" id="container">
+   <div class="winnertext">
+      <p id='ganador'></p>
+      <p id='score'></p>
+    </div>
+      <div class="castle-container">
+          <div class="castle">
+              
+                           
+              <div class="mound-group">
+                  <img class="antenna" src="images/wing1.png" />
+                 
+                  <img class="mound" src="https://static-s.aa-cdn.net/img/gp/20600009564450/8M5nLPq5jwFK39SuxfRgGsox17JvYBeOaIOIx2Pm30F1AjHT4l45rUn7faUIDIEfkg=s300?v=1" />
+              </div>
+              <img class="wind" src="images/wing2.png" />
+            
+              
+            
+              <div class="mound-group b">
+                  <img class="antenna" id="c"  src="images/wing1.png" />
+                 
+                  <img class="mound b" src="https://static-s.aa-cdn.net/img/gp/20600009564450/8M5nLPq5jwFK39SuxfRgGsox17JvYBeOaIOIx2Pm30F1AjHT4l45rUn7faUIDIEfkg=s300?v=1" />
+              </div>
+              <img class="wind b" id="b" src="images/wing2.png" />
+            
+        </div>
+    
+     
+     
+  </div>
+</div>
 
   <canvas id="canvas" width="1200" height="700"></canvas>
+  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+  <script src='http://cdnjs.cloudflare.com/ajax/libs/gsap/1.14.2/TweenMax.min.js'></script>
+  <script type="text/javascript" src="closure.js"></script>
   <script type="text/javascript" src="Sounds/lib/soundjs.min.js"></script>
   <script type="text/javascript" src="index.js"></script>
   <script type="text/javascript" src="sounds.js"></script>
