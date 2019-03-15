@@ -101,7 +101,7 @@ Game.prototype.start = function() {
   this.moveAll();
   this.draw();
   this.person.Hola();
-
+  
   }.bind(this), 1000 / this.fps);
 
 };
@@ -129,9 +129,11 @@ alert("LLEGOO");
         ganador.paused=false;
         //ver qué player tiene mayor score
         this.flaglevel=3;
+        //this.clear();
         this.stop();
-        this.clear();
-
+        this.background='';
+        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+        document.getElementById('winner').style.visibility = 'visible';
       }
 
 if(this.level!=4){

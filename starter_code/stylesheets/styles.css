@@ -20,7 +20,7 @@
 #winner{
 width: 300px;
 height: 300px;
-display: none;
+visibility:hidden;
 background:black;
 
 }
