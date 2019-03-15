@@ -78,7 +78,7 @@ Game.prototype.reset = function() {
 };
   
 Game.prototype.start = function() {
-
+if(!this.checkGameOver()){
   if(this.level===1){
 
     instance = createjs.Sound.play("restaurant", {interrupt: createjs.Sound.INTERRUPT_ANY, loop: -1, volume: 1});
@@ -103,12 +103,22 @@ Game.prototype.start = function() {
   this.person.Hola();
   
   }.bind(this), 1000 / this.fps);
+}else{
+
+ // this.stop();
+  //alert("IIIIIIIIII");
+        this.background='';
+        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+        document.getElementById('winner').style.display = 'block';
+        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+
+}
 
 };
 
 Game.prototype.nextClient = function() {
 
-  if((this.player1.score===3 ||this.player2.score===3)&& this.flaglevel==0 ){
+  if((this.player1.score===1 ||this.player2.score===1)&& this.flaglevel==0 ){
     this.level=2;
    
       soundParis = createjs.Sound.play("paris", {interrupt: createjs.Sound.INTERRUPT_ANY, loop: -1, volume: 0.2});
@@ -116,24 +126,25 @@ Game.prototype.nextClient = function() {
     
     this.flaglevel=1;
 
-  }else if((this.player1.score===6 ||this.player2.score===6) && this.flaglevel==1  ){
-alert("LLEGOO");
+  }else if((this.player1.score===2 ||this.player2.score===2) && this.flaglevel==1  ){
+//alert("LLEGOO");
     this.level=3;
     soundNy = createjs.Sound.play("ny", {interrupt: createjs.Sound.INTERRUPT_ANY, loop: -1, volume: 0.2});
     soundNy.paused=false;
     this.flaglevel=2;
-  }else if((this.player1.score===9 ||this.player2.score===9) && this.flaglevel==2 ){
+  }else if((this.player1.score===3 ||this.player2.score===3) && this.flaglevel==2 ){
         this.level=4;
-        alert("GAME OVEEEEER");
+        //alert("GAME OVEEEEER");
         ganador = createjs.Sound.play("ganador", {interrupt: createjs.Sound.INTERRUPT_ANY, loop: -1, volume: 0.2});
         ganador.paused=false;
         //ver qué player tiene mayor score
         this.flaglevel=3;
+        //this.start();
         //this.clear();
-        this.stop();
+        this.stop();/*
         this.background='';
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-        document.getElementById('winner').style.visibility = 'visible';
+        document.getElementById('winner').style.visibility = 'visible';*/
       }
 
 if(this.level!=4){
@@ -192,7 +203,20 @@ Game.prototype.stop = function() {
   if(this.level==3){
   soundParis.paused=true;
   }else if(this.level==4){
-    soundNy.paused=true;}
+    soundNy.paused=true;
+    //alert("IIIIIIIIII");
+    this.background='';
+    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    var winner=this.whoWins();
+    document.getElementById('ganador').innerHTML=' WINNER: '+winner+' !!!';
+    document.getElementById('score').innerHTML='PLAYER 1 :'+this.player1.score+' PLAYER 2 :'+this.player2.score;
+
+    document.getElementById('winner').style.display = 'block';
+
+    //this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+  
+  
+  }
 
 
 };
@@ -200,7 +224,7 @@ Game.prototype.stop = function() {
 Game.prototype.gameOver = function () {
   //this.ctx.clearRect(0, 0, 1200, 700);
   //document.getElementById("winner").style.display=block;
-  alert("BIEEEEEEN");
+  //alert("BIEEEEEEN");
   this.clear();
   /*var ctx = this.ctx
   var img = new Image();
@@ -208,4 +232,22 @@ Game.prototype.gameOver = function () {
   img.onload = function() {
     ctx.drawImage(img, 300, 250, 600, 300);
   };*/
+};
+
+Game.prototype.checkGameOver = function () {
+  return (this.level === 4) ? true : false
+};
+
+Game.prototype.whoWins = function () {
+
+  if(this.player1.score>this.player2.score){
+
+    return 'player 1';
+  }else{
+
+    return 'player 2';
+
+
+  }
+
 };
