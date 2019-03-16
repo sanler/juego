@@ -22,7 +22,7 @@ window.onload = function() {
       return;
     }
 
-    var assetsPath = "../Sounds/_assets/audio/";
+    var assetsPath = "Sounds/assets/audio/";
 
     var sounds = [
     { src: "musicaIntro.mp3", id: "musicaIntro" },
