@@ -1,37 +1,41 @@
 .container { width: 100%; height: 700px; margin: 0; background: #2294b3; overflow: hidden; }
 
-.container { display:none;padding-top: 62.5%; position: absolute; width: 100%; bottom: 0; left: 0; }
+.container { display:none;padding-top: 30.5%; position: absolute; width: 100%; bottom: 0; left: 0; }
 
 img,
 .mound-group{ position: absolute; transform-style: preserve-3d; }
 
 .castle-container { position: absolute; left: 100%; bottom: 0%; }
-.castle { position: absolute; top: 100; left: 0; width: 600px; height: 750px; perspective: 1000px; transform-origin: 50% 70%; transform: translate(-50%, -70%) rotateZ(9deg); }
+.castle {  position: absolute; top: -200px; left: 0; width: 600px; height: 750px; perspective: 1000px; transform-origin: 50% 70%; transform: translate(-50%, -70%) rotateZ(9deg); }
 
 
 
 .antenna { left: -100px; top: 0px; transform-origin: 100% 65%; transform: rotateZ(0deg); }
 .mound-group { left: 115px; top: 0px; transform-origin: 110px 220px; transform: rotateZ(0deg); }
 
-.mound {  }
 .wind { left: 340px; top: 0px; transform-origin: 0% 90%; transform: rotateZ(0deg); }
 
 
 .background { position: absolute; bottom: 25.5%; left: 0; width: 100%; }
 
 
-#c{ left: 400px; top: 400px; transform-origin: 100% 65%; transform: rotateZ(0deg); }
-.mound-group .b{ left: 450px; top: 300px; transform-origin: 110px 220px; transform: rotateZ(0deg); }
- #b{ left: 720px; top: 0px;transform-origin: 0% 90%; transform: rotateZ(0deg); }
+#c{ left: -100px; top: 0px; transform-origin: 100% 65%; transform: rotateZ(0deg); }
+.mound-group .b{ left: 115px; top: 300px; transform-origin: 110px 220px; transform: rotateZ(0deg); }
+ #b{ left: 340px; top: 0px;transform-origin: 0% 90%; transform: rotateZ(0deg); }
 
 
 
+ #e{ left: -100px; top: 0px; transform-origin: 100% 65%; transform: rotateZ(0deg); }
+ .mound-group .d{ left: 115px; top: 100px; transform-origin: 110px 220px; transform: rotateZ(0deg); }
+  #f{ left: 340px; top: 0px;transform-origin: 0% 90%; transform: rotateZ(0deg); }
+ 
+ 
 
  #ganador{
     position: absolute;
     text-align: center;
     color: #fff;
-    margin-top:370px;
+    margin-top:250px;
     padding: 0;
     font-size: 8em;
     font-family: sans-serif;
@@ -42,7 +46,7 @@ img,
         position: absolute;
         text-align: center;
         color: #fff;
-        margin-top:550px;
+        margin-top:400px;
         padding: 0;
         font-size: 3em;
         font-family: sans-serif;

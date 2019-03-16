@@ -33,10 +33,6 @@ var draw = function() {
     TweenLite.set(_castleCont, {x: (1440 * scale + castleWidth) * -progress + castleWidth / 2, y: 900 * scale * -(0.36 + progress * 0.35)});
 };
 
-
-
-
-
 var init = function() {
     
     requestAnimationFrame(draw);
@@ -45,8 +41,6 @@ if (document.readyState == 'complete') {
 } else {
     $(window).load(init);
 };
-
-
 
 
 var tl5 = new TimelineMax({repeat: -1, delay: 0.0, onReverseComplete: function() {this.seek(tl5.duration())}});

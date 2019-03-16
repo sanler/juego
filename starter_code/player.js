@@ -180,12 +180,10 @@ Player.prototype.setListeners = function() {
 
         if(this.checkWinner()){
 
-          alert('acierto');
           this.game.player1.removeListener();
 
         }else{
       
-          alert('fallo');
           this.game.player2.setListeners();
         }
 
@@ -195,12 +193,10 @@ Player.prototype.setListeners = function() {
 
         if(this.checkWinner()){
 
-          alert('acierto');
           this.game.player2.removeListener();
 
         }else{
 
-          alert('fallo');
           this.game.player1.setListeners();
 
         }
@@ -250,7 +246,6 @@ Player.prototype.checkWinner = function (clientBurger) {
 
   if(acierto===1){
 
-    console.log('ACIERTO');
     this.game.person.win=1;
     this.scores();
     createjs.Sound.play('acierto');
@@ -259,7 +254,6 @@ Player.prototype.checkWinner = function (clientBurger) {
 
   }else{
 
-    console.log('NOT YET');
     this.game.person.win=5;
     createjs.Sound.play('fallo_Level1');
 
@@ -314,7 +308,12 @@ Player.prototype.burgerDraw = function (x) {
 Player.prototype.scoreDraw = function (x) {
 
   this.game.ctx.font = '48px serif';  
-  this.game.ctx.fillText(this.score,x, 100);
+  this.game.ctx.fillStyle = 'blue';  
+
+  this.game.ctx.fillRect(x-6, 100-45,52,52)
+  this.game.ctx.fillStyle = 'white';  
+
+  this.game.ctx.fillText(this.score+'$',x, 100);
 
 };
   

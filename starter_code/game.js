@@ -105,8 +105,7 @@ if(!this.checkGameOver()){
   }.bind(this), 1000 / this.fps);
 }else{
 
- // this.stop();
-  //alert("IIIIIIIIII");
+
         this.background='';
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
         document.getElementById('winner').style.display = 'block';
@@ -118,7 +117,7 @@ if(!this.checkGameOver()){
 
 Game.prototype.nextClient = function() {
 
-  if((this.player1.score===1 ||this.player2.score===1)&& this.flaglevel==0 ){
+  if((this.player1.score===3 ||this.player2.score===3)&& this.flaglevel==0 ){
     this.level=2;
    
       soundParis = createjs.Sound.play("paris", {interrupt: createjs.Sound.INTERRUPT_ANY, loop: -1, volume: 0.2});
@@ -126,25 +125,19 @@ Game.prototype.nextClient = function() {
     
     this.flaglevel=1;
 
-  }else if((this.player1.score===2 ||this.player2.score===2) && this.flaglevel==1  ){
-//alert("LLEGOO");
+  }else if((this.player1.score===6 ||this.player2.score===6) && this.flaglevel==1  ){
     this.level=3;
     soundNy = createjs.Sound.play("ny", {interrupt: createjs.Sound.INTERRUPT_ANY, loop: -1, volume: 0.2});
     soundNy.paused=false;
     this.flaglevel=2;
-  }else if((this.player1.score===3 ||this.player2.score===3) && this.flaglevel==2 ){
+  }else if((this.player1.score===9 ||this.player2.score===9) && this.flaglevel==2 ){
         this.level=4;
-        //alert("GAME OVEEEEER");
         ganador = createjs.Sound.play("FIN", {interrupt: createjs.Sound.INTERRUPT_ANY, loop: 1, volume: 0.2});
         ganador.paused=false;
-        //ver qué player tiene mayor score
         this.flaglevel=3;
-        //this.start();
-        //this.clear();
-        this.stop();/*
-        this.background='';
-        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-        document.getElementById('winner').style.visibility = 'visible';*/
+       
+        this.stop();
+        
       }
 
 if(this.level!=4){
@@ -213,7 +206,6 @@ Game.prototype.stop = function() {
 
     document.getElementById('container').style.display = 'block';
 
-    //this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
   
   
   }
@@ -221,18 +213,6 @@ Game.prototype.stop = function() {
 
 };
 
-Game.prototype.gameOver = function () {
-  //this.ctx.clearRect(0, 0, 1200, 700);
-  //document.getElementById("winner").style.display=block;
-  //alert("BIEEEEEEN");
-  this.clear();
-  /*var ctx = this.ctx
-  var img = new Image();
-  img.src = 'images/gameover.png';
-  img.onload = function() {
-    ctx.drawImage(img, 300, 250, 600, 300);
-  };*/
-};
 
 Game.prototype.checkGameOver = function () {
   return (this.level === 4) ? true : false

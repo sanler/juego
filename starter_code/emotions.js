@@ -14,9 +14,13 @@ function Effect(game, type) {
     switch (type) {
       case 'coins':
         this.image.frames = 5;
+        this.width = 60;
+        this.height = 90;
         break;
       case 'angry':
         this.image.frames = 8;
+        this.width = 200;
+        this.height = 200;
         break;
     }
   }
